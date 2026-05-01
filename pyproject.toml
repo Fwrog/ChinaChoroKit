@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chinachorokit"
+version = "0.1.0"
+description = "Configurable China province-level choropleth maps with the nine-dash line."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "geopandas>=0.14",
+  "pandas>=2.0",
+  "matplotlib>=3.7",
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+  "mapclassify>=2.6",
+]
+
+[project.scripts]
+china-choro = "medmap_china.render:main"
+chinachorokit = "medmap_china.render:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

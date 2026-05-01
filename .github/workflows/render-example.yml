@@ -1,0 +1,39 @@
+name: Render example map
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gdal-bin libgdal-dev
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install Python dependencies
+        run: |
+          uv sync
+
+      - name: Render map
+        run: uv run china-choro --config config/example_china_map.yaml
+
+      - name: Upload rendered outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-map
+          path: output/

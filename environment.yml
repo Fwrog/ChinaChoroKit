@@ -1,0 +1,11 @@
+name: chinachorokit
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - geopandas>=0.14
+  - pandas>=2.0
+  - matplotlib>=3.7
+  - numpy>=1.24
+  - pyyaml>=6.0
+  - mapclassify>=2.6

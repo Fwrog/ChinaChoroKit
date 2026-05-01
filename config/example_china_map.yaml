@@ -1,0 +1,132 @@
+map:
+  title:
+  # A4 横版：297 mm × 210 mm，按英寸约为 11.69 × 8.27。
+  figsize: [11.69, 8.27]
+  dpi: 300
+  projection_epsg: 3857
+  # 插图型紧凑版式：地图主体靠右，左下保留图例与比例尺。
+  axes_position: [0.285, 0.245, 0.585, 0.700]
+  padding_ratio: 0.045
+  bbox_inches:
+  pad_inches: 0.0
+  outputs:
+    - "../output/china_province_choropleth.png"
+    - "../output/china_province_choropleth.svg"
+  note:
+
+geojson:
+  path: "../中华人民共和国.geojson"
+  source_epsg: 4326
+  name_field: "name"
+  adcode_field: "adcode"
+  nine_dash_pattern: "JD"
+
+data:
+  values_path: "../data/province_values.csv"
+  name_column: "province"
+  value_column: "value"
+  encoding: "utf-8-sig"
+  aggregation: "sum"
+
+classification:
+  # 参考 ArcGIS 的 Natural Breaks (Jenks)：先把 0 / 未提供数据作为灰色背景类，
+  # 再对正值做自然断点分级。当前样例为 0 单独一类 + 正值 5 类。
+  # 可选：manual、equal_interval、quantile、natural_breaks、defined_interval。
+  method: "natural_breaks"
+  class_count: 5
+  right_closed: true
+  include_lowest: true
+  zero_as_no_data: true
+  positive_floor: 0
+  integer_ranges: true
+  precision: 0
+  unit: ""
+
+style:
+  # 5 个正值分级颜色，顺序从低到高。比默认 YlOrRd 更接近课程制图插图的柔和观感。
+  class_colors:
+    - "#fff2a8"
+    - "#fed16a"
+    - "#fca14a"
+    - "#ef4b2f"
+    - "#9a0030"
+  colormap: "YlOrRd"
+  reverse_colormap: false
+  no_data_color: "#eeeeee"
+  province_edgecolor: "#d2d2d2"
+  province_linewidth: 0.50
+
+nine_dash_line:
+  facecolor: "#6b6b6b"
+  edgecolor: "#6b6b6b"
+  linewidth: 0.45
+  alpha: 1.0
+
+legend:
+  enabled: true
+  title:
+  coordinate_system: "figure"
+  loc: "lower left"
+  bbox_to_anchor: [0.080, 0.340]
+  ncol: 3
+  columnspacing: 1.32
+  font_size: 12
+  title_font_size: 12
+  frameon: false
+  framealpha: 0.0
+  borderpad: 0.20
+  labelspacing: 0.52
+  handlelength: 1.68
+  handleheight: 0.98
+  show_empty_classes: true
+  show_no_data: true
+  no_data_label: "0"
+
+scale_bar:
+  enabled: true
+  coordinate_system: "figure"
+  style: "line_ticks"
+  box: [0.083, 0.208, 0.430, 0.080]
+  length_km: 2000
+  segments: 4
+  major_ticks: [0, 1000, 2000]
+  minor_interval_km: 250
+  label_position: "above"
+  line_y: 0.38
+  major_tick_height: 0.18
+  minor_tick_height: 0.10
+  linewidth: 0.85
+  location: [0.40, 0.08]
+  font_size: 12
+  unit_label: " km"
+  height_ratio: 0.006
+  color: "#222222"
+  alternate_color: "#ffffff"
+
+north_arrow:
+  enabled: true
+  coordinate_system: "figure"
+  style: "compass"
+  box: [0.865, 0.765, 0.052, 0.122]
+  show_label: true
+  label: "N"
+  label_y: 0.86
+  location: [0.70, 0.14]
+  size: 0.065
+  font_size: 12
+  color: "#222222"
+
+province_labels:
+  enabled: false
+  only_with_data: true
+  font_size: 7
+  color: "#333333"
+
+fonts:
+  sans_serif:
+    - "Arial"
+    - "Microsoft YaHei"
+    - "SimHei"
+    - "Noto Sans CJK SC"
+    - "Arial Unicode MS"
+    - "DejaVu Sans"
