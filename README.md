@@ -174,31 +174,3 @@ output/china_province_choropleth.svg
 ```
 
 The PNG is suitable for reports and slides. The SVG can be edited in Illustrator, Inkscape, PowerPoint, or other vector tools.
-
-## GitHub Notes
-
-This repository is prepared for direct GitHub upload:
-
-- `.gitignore` excludes Python caches, virtual environments, logs, and local editor noise.
-- `.gitattributes` marks generated images as binary and normalizes text files.
-- `.editorconfig` keeps indentation and UTF-8 behavior consistent.
-- `.github/workflows/render-example.yml` renders the example map in GitHub Actions.
-- `.github/ISSUE_TEMPLATE/bug_report.md` provides a basic issue template.
-
-Before publishing as a formal open-source project, choose a license and add a `LICENSE` file. MIT or Apache-2.0 are common permissive options, but the choice affects reuse terms and should be deliberate.
-
-## Data Source Notice
-
-The GeoJSON boundary file should be accompanied by a clear data source and license notice before public release. If the boundary file came from a third-party dataset, verify whether redistribution is allowed.
-
-## Project Positioning
-
-Suggested short description:
-
-> A configurable Python toolkit for drawing China province-level choropleth maps with the nine-dash line.
-
-Suggested repository name:
-
-```text
-ChinaChoroKit
-```
