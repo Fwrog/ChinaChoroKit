@@ -99,16 +99,18 @@ Edit `data/province_values.csv`:
 
 ```csv
 province,value
-四川,3821
-浙江,90
-陕西,76
-湖南,57
-云南,38
-山东,92
-重庆,10
-新疆,68
-山西,38
+四川,1280
+浙江,540
+陕西,315
+湖南,225
+云南,85
+山东,760
+重庆,45
+新疆,420
+山西,165
 ```
+
+The included values are synthetic demo data. They are only used to demonstrate the rendering workflow and should not be interpreted as real measurements.
 
 Province names can be short names or full administrative names. For example, `四川省`, `重庆市`, and `新疆维吾尔自治区` are normalized to `四川`, `重庆`, and `新疆`.
 
@@ -124,11 +126,11 @@ For the included sample data, the resulting legend classes are:
 
 ```text
 0
-1-10
-11-38
-39-76
-77-92
-93-3821
+1-165
+166-315
+316-540
+541-760
+761-1280
 ```
 
 The positive-value breaks are computed from the CSV, so they will update automatically when the data changes.
